@@ -1,0 +1,51 @@
+:root {
+    --background-main: #EDEAE0;
+    --header-footer: #264653;
+    --button-highlight: #8B5E34;
+    --button-hover: #6E4526;
+    --button-focus: #412C19;
+    --text-primary: #0B132B;
+    --text-secondary: #495057;
+    --link-hover: #2A9D8F;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}
+
+body {
+    background-color: var(--background-main);
+    color: var(--text-primary);
+}
+
+button {
+    background-color: var(--button-highlight);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: var(--button-hover);
+}
+
+button:focus {
+    outline: 2px solid var(--button-focus);
+    outline-offset: 2px;
+}
+
+a {
+    color: var(--text-primary);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: var(--link-hover);
+} 
