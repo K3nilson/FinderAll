@@ -69,7 +69,7 @@ function mostrarSelecaoDispositivo() {
             <div class="device-selection">
                 ${dispositivos.map(dispositivo => `
                     <button class="device-option" onclick="selecionarDispositivo('${dispositivo.id}')">
-                        ${dispositivo.nome} (${dispositivo.id})
+                       <a target="_blank"> ${dispositivo.nome} (${dispositivo.id})</a>
                     </button>
                 `).join('')}
             </div>

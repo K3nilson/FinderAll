@@ -9,6 +9,7 @@ link_location = "Localização não disponível no momento"
 # Função para ler dados do Arduino via Serial
 def read_from_arduino():
     global link_location
+    print("Iniciando leitura do Arduino...")
     try:
         arduino = serial.Serial('/dev/ttyACM0', 9600)  # Substitua pela porta correta
         while True:
@@ -33,11 +34,16 @@ class CustomHandler(http.server.SimpleHTTPRequestHandler):
 
 # Função para iniciar o servidor local
 def start_server():
+    print("Iniciando servidor HTTP...")
     with socketserver.TCPServer(("", PORT), CustomHandler) as httpd:
         print(f"Servidor iniciado em http://localhost:{PORT}")
         httpd.serve_forever()
 
 # Threading para rodar servidor e leitura serial simultaneamente
-thread_arduino = threading.Thread(target=read_from_arduino, daemon=True)
-thread_arduino.start()
-start_server()
+try:
+    print("Inicializando as threads...")
+    thread_arduino = threading.Thread(target=read_from_arduino, daemon=True)
+    thread_arduino.start()
+    start_server()
+except Exception as e:
+    print(f"Erro ao iniciar o servidor ou a thread: {e}")
